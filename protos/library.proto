@@ -3,7 +3,7 @@ syntax = "proto2";
 package library;
 
 message InventoryItem {
-  required string id = 1;
+  optional string id = 1;
 
   optional OneOfType type = 2;
 
@@ -12,7 +12,7 @@ message InventoryItem {
     TAKEN = 1;
   }
 
-  optional Status status = 3 [default = AVAILABLE];
+  optional Status status = 3;
 }
 
 message OneOfType {
@@ -22,7 +22,7 @@ message OneOfType {
 }
 
 message BOOK {
-  required string ISBN = 1;
+  optional string ISBN = 1;
   optional string title = 2;
   optional string author = 3;
   repeated string genre = 4;
@@ -35,7 +35,7 @@ service InventoryService {
 }
 
 message BookCreateRequest {
-  required string ISBN = 1;
+  optional string ISBN = 1;
   optional string title = 2;
   optional string author = 3;
   repeated string genre = 4;
@@ -47,7 +47,7 @@ message BookCreateResponse {
 }
 
 message BookGetRequest {
-  required string ISBN = 1;
+  optional string ISBN = 1;
 }
 
 message BookGetResponse {
