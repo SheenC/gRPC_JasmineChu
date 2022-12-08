@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rlibrary.proto\x12\x07library\"\x90\x01\n\rInventoryItem\x12\n\n\x02id\x18\x01 \x01(\t\x12 \n\x04type\x18\x02 \x01(\x0b\x32\x12.library.OneOfType\x12-\n\x06status\x18\x03 \x01(\x0e\x32\x1d.library.InventoryItem.Status\"\"\n\x06Status\x12\r\n\tAVAILABLE\x10\x00\x12\t\n\x05TAKEN\x10\x01\"8\n\tOneOfType\x12\x1d\n\x04\x62ook\x18\x01 \x01(\x0b\x32\r.library.BOOKH\x00\x42\x0c\n\ntype_oneof\"P\n\x04\x42OOK\x12\x0c\n\x04ISBN\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0e\n\x06\x61uthor\x18\x03 \x01(\t\x12\r\n\x05genre\x18\x04 \x03(\t\x12\x0c\n\x04year\x18\x05 \x01(\x05\"]\n\x11\x42ookCreateRequest\x12\x0c\n\x04ISBN\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0e\n\x06\x61uthor\x18\x03 \x01(\t\x12\r\n\x05genre\x18\x04 \x03(\t\x12\x0c\n\x04year\x18\x05 \x01(\x05\"%\n\x12\x42ookCreateResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1e\n\x0e\x42ookGetRequest\x12\x0c\n\x04ISBN\x18\x01 \x01(\t\"\"\n\x0f\x42ookGetResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2\x9b\x01\n\x10InventoryService\x12G\n\nCreateBook\x12\x1a.library.BookCreateRequest\x1a\x1b.library.BookCreateResponse\"\x00\x12>\n\x07GetBook\x12\x17.library.BookGetRequest\x1a\x18.library.BookGetResponse\"\x00')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rlibrary.proto\x12\x07library\"\x9f\x01\n\rInventoryItem\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1d\n\x04\x62ook\x18\x02 \x01(\x0b\x32\r.library.BookH\x00\x12-\n\x06status\x18\x03 \x01(\x0e\x32\x1d.library.InventoryItem.Status\"\"\n\x06Status\x12\r\n\tAVAILABLE\x10\x00\x12\t\n\x05TAKEN\x10\x01\x42\x10\n\x0einventory_type\"P\n\x04\x42ook\x12\x0c\n\x04ISBN\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0e\n\x06\x61uthor\x18\x03 \x01(\t\x12\r\n\x05genre\x18\x04 \x03(\t\x12\x0c\n\x04year\x18\x05 \x01(\x05\"k\n\x11\x42ookCreateRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1b\n\x04\x62ook\x18\x02 \x01(\x0b\x32\r.library.Book\x12-\n\x06status\x18\x03 \x01(\x0e\x32\x1d.library.InventoryItem.Status\"%\n\x12\x42ookCreateResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1e\n\x0e\x42ookGetRequest\x12\x0c\n\x04ISBN\x18\x01 \x01(\t\"\"\n\x0f\x42ookGetResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2\x9b\x01\n\x10InventoryService\x12G\n\nCreateBook\x12\x1a.library.BookCreateRequest\x1a\x1b.library.BookCreateResponse\"\x00\x12>\n\x07GetBook\x12\x17.library.BookGetRequest\x1a\x18.library.BookGetResponse\"\x00')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'library_pb2', globals())
@@ -21,21 +21,19 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _INVENTORYITEM._serialized_start=27
-  _INVENTORYITEM._serialized_end=171
-  _INVENTORYITEM_STATUS._serialized_start=137
-  _INVENTORYITEM_STATUS._serialized_end=171
-  _ONEOFTYPE._serialized_start=173
-  _ONEOFTYPE._serialized_end=229
-  _BOOK._serialized_start=231
-  _BOOK._serialized_end=311
-  _BOOKCREATEREQUEST._serialized_start=313
-  _BOOKCREATEREQUEST._serialized_end=406
-  _BOOKCREATERESPONSE._serialized_start=408
-  _BOOKCREATERESPONSE._serialized_end=445
-  _BOOKGETREQUEST._serialized_start=447
-  _BOOKGETREQUEST._serialized_end=477
-  _BOOKGETRESPONSE._serialized_start=479
-  _BOOKGETRESPONSE._serialized_end=513
-  _INVENTORYSERVICE._serialized_start=516
-  _INVENTORYSERVICE._serialized_end=671
+  _INVENTORYITEM._serialized_end=186
+  _INVENTORYITEM_STATUS._serialized_start=134
+  _INVENTORYITEM_STATUS._serialized_end=168
+  _BOOK._serialized_start=188
+  _BOOK._serialized_end=268
+  _BOOKCREATEREQUEST._serialized_start=270
+  _BOOKCREATEREQUEST._serialized_end=377
+  _BOOKCREATERESPONSE._serialized_start=379
+  _BOOKCREATERESPONSE._serialized_end=416
+  _BOOKGETREQUEST._serialized_start=418
+  _BOOKGETREQUEST._serialized_end=448
+  _BOOKGETRESPONSE._serialized_start=450
+  _BOOKGETRESPONSE._serialized_end=484
+  _INVENTORYSERVICE._serialized_start=487
+  _INVENTORYSERVICE._serialized_end=642
 # @@protoc_insertion_point(module_scope)

@@ -5,7 +5,9 @@ package library;
 message InventoryItem {
   optional string id = 1;
 
-  optional OneOfType type = 2;
+  oneof inventory_type {
+    Book book = 2;
+  }
 
   enum Status {
     AVAILABLE = 0;
@@ -15,13 +17,7 @@ message InventoryItem {
   optional Status status = 3;
 }
 
-message OneOfType {
-  oneof type_oneof {
-    BOOK book = 1;
-  }
-}
-
-message BOOK {
+message Book {
   optional string ISBN = 1;
   optional string title = 2;
   optional string author = 3;
@@ -35,11 +31,9 @@ service InventoryService {
 }
 
 message BookCreateRequest {
-  optional string ISBN = 1;
-  optional string title = 2;
-  optional string author = 3;
-  repeated string genre = 4;
-  optional int32 year = 5;
+  optional string id = 1;
+  optional Book book = 2; 
+  optional InventoryItem.Status status = 3;
 }
 
 message BookCreateResponse {
