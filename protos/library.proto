@@ -1,0 +1,55 @@
+syntax = "proto2";
+
+package library;
+
+message InventoryItem {
+  required string id = 1;
+
+  optional OneOfType type = 2;
+
+  enum Status {
+    AVAILABLE = 0;
+    TAKEN = 1;
+  }
+
+  optional Status status = 3 [default = AVAILABLE];
+}
+
+message OneOfType {
+  oneof type_oneof {
+    BOOK book = 1;
+  }
+}
+
+message BOOK {
+  required string ISBN = 1;
+  optional string title = 2;
+  optional string author = 3;
+  repeated string genre = 4;
+  optional int32 year = 5;
+}
+
+service InventoryService {
+  rpc CreateBook(BookCreateRequest) returns (BookCreateResponse) {}
+  rpc GetBook(BookGetRequest) returns (BookGetResponse) {}
+}
+
+message BookCreateRequest {
+  required string ISBN = 1;
+  optional string title = 2;
+  optional string author = 3;
+  repeated string genre = 4;
+  optional int32 year = 5;
+}
+
+message BookCreateResponse {
+  optional string message = 1;
+}
+
+message BookGetRequest {
+  required string ISBN = 1;
+}
+
+message BookGetResponse {
+  optional string message = 1;
+}
