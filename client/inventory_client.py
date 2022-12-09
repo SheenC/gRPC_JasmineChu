@@ -25,13 +25,19 @@ class InventoryClient(object):
 
     def getBookName(self, ISBN):
         """
-        Client function to call the rpc for GetServerResponse
+        Client function to call the rpc for BookGet Service
         """
+        # Search book by its ISBN
         bookGetRequest = library_pb2.BookGetRequest(ISBN=ISBN)
+        # Get the response in a string 
         bookGetResponse = self.stub.GetBook(bookGetRequest)
+        # use regex to extract the book name
         name = re.search('title(.*)author', str(bookGetResponse)).group(1)
+        # remove the quote and special symbols around the book name
         name = name[4 : len(name)-6]
-        print("Inventory client received following from server: " + bookGetResponse.message)  
+        # Print info in client side
+        print("Inventory client received following from server: " + bookGetResponse.message) 
+        # return the book name 
         return name
 
 
