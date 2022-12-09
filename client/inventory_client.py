@@ -31,10 +31,23 @@ class InventoryClient(object):
         # Get the response in a string 
         bookGetResponse = self.stub.GetBook(bookGetRequest)
         # use regex to extract the book name
-        name = re.search('title(.*)author', str(bookGetResponse)).group(1)
-        # remove the quote and special symbols around the book name
-        name = name[4 : len(name)-6]
-        # Print info in client side
-        print("Inventory client received following from server: " + bookGetResponse.message) 
-        # return the book name 
-        return name
+        name = re.search('title(.*)author', str(bookGetResponse))
+        # Not fount
+        if name is None:
+            print("The book is not found!")
+            return "[Not Found]"
+        # Found
+        else:
+            name = name.group(1)
+            # remove the quote and special symbols around the book name
+            name = name[4 : len(name)-6]
+            # Print info in client side
+            print("Inventory client received following from server: " + bookGetResponse.message) 
+            # return the book name 
+            return name
+
+
+if __name__ == '__main__':
+    client = InventoryClient()
+    result = client.getBookName(ISBN="ISBN0001")
+    print("The name is: ", result)

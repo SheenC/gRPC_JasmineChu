@@ -15,12 +15,12 @@ class GetBookTitles(object):
         for isbn in ISBNs:
             name = self.client.getBookName(ISBN=isbn)
             names.append(name)
-            
+
         return names
 
 
 if __name__ == '__main__':
     getBookTitles = GetBookTitles()
-    result = getBookTitles.getBookNames(ISBNs=["ISBN0001","ISBN0011"])
+    result = getBookTitles.getBookNames(ISBNs=["ISBN0001","ISBN0011","ISBN0012"])
     print("The name is: ", result)
 
