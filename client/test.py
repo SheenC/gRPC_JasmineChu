@@ -24,7 +24,7 @@ class TestInventoryClient(unittest.TestCase):
 class TestGetBookTitles(unittest.TestCase):
     @patch('get_book_titles.GetBookTitles.getBookNames')
     def testGetBookTitles(self, mock_getBookTitles):
-        getBookTitles = GetBookTitles(MockClient)
+        getBookTitles = GetBookTitles()
         getBookTitles.getBookNames = MagicMock(return_value = ['The other book','The anotther book'])
         self.assertEqual(getBookTitles.getBookNames(ISBNs=['ISBN6789','ISBN5678'], key='value'), ['The other book', 'The anotther book'])
 
@@ -38,7 +38,7 @@ class TestInventoryClientWithServerOn(unittest.TestCase):
 # Test get_book_titles starting server
 class TestGetBookTitlesWithServerOn(unittest.TestCase):
     def testGetBookTitles(self):
-        client = GetBookTitles(mockClient=None)
+        client = GetBookTitles()
         self.assertEqual(client.getBookNames(ISBNs=['ISBN0011', 'ISBN6789']), ['Book One', '[Not Found]'])
 
 if __name__ == '__main__':
