@@ -1,2 +1,2 @@
 # gRPC_JasmineChu
-A3 gRPC server for a library
+A gRPC server and client for a library to create book inventories and search books.
