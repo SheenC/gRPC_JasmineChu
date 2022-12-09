@@ -22,16 +22,16 @@ class InventoryClient(object):
         # bind the client and the server
         self.stub = library_pb2_grpc.InventoryServiceStub(self.channel)
 
-    def get_url(self, message):
+    def getBook(self, ISBN):
         """
         Client function to call the rpc for GetServerResponse
         """
-        message = library_pb2.Message(message=message)
-        print(f'{message}')
-        return self.stub.GetServerResponse(message)
+        bookGetRequest = library_pb2.BookGetRequest(ISBN=ISBN)
+        bookGetResponse = self.stub.GetBook(bookGetRequest)
+        print("Inventory client received following from server: " + bookGetResponse.message)  
+        return bookGetResponse.message
 
 
 if __name__ == '__main__':
     client = InventoryClient()
-    result = client.get_url(message="Hello Server you there?")
-    print(f'{result}')
+    result = client.getBook(ISBN="ISBN0001")
