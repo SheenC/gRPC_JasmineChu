@@ -74,7 +74,7 @@ class TestInventoryClientWithServerOn(unittest.TestCase):
 class TestGetBookTitlesWithServerOn(unittest.TestCase):
     def testGetBookTitles(self):
         client = GetBookTitles()
-        self.assertEqual(client.getBookNames(ISBNs=['ISBN0011', 'ISBN6789']), ['Book One', '[Not Found]'])
+        self.assertEqual(client.getBookNames(ISBNs=['ISBN0011','ISBN0012', 'ISBN6789']), ['Book One', 'Book Two', '[Not Found]'])
 
 
 if __name__ == '__main__':
