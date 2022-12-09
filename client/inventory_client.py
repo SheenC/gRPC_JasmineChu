@@ -38,9 +38,3 @@ class InventoryClient(object):
         print("Inventory client received following from server: " + bookGetResponse.message) 
         # return the book name 
         return name
-
-
-if __name__ == '__main__':
-    client = InventoryClient()
-    result = client.getBookName(ISBN="ISBN0001")
-    print("The name is: ", result)
