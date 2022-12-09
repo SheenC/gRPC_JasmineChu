@@ -1,9 +1,9 @@
 import grpc
-import sys
-# adding service to the system path
-sys.path.insert(0, '../service')
-from service import library_pb2_grpc as pb2_grpc
-from service import library_pb2 as pb2
+import os, sys
+sys.path.insert(0, os.path.abspath("."))
+import library_pb2
+import library_pb2_grpc
+import service.InventoryService
 
 
 class InventoryClient(object):
@@ -20,13 +20,13 @@ class InventoryClient(object):
             '{}:{}'.format(self.host, self.server_port))
 
         # bind the client and the server
-        self.stub = pb2_grpc.InventoryServiceStub(self.channel)
+        self.stub = library_pb2_grpc.InventoryServiceStub(self.channel)
 
     def get_url(self, message):
         """
         Client function to call the rpc for GetServerResponse
         """
-        message = pb2.Message(message=message)
+        message = library_pb2.Message(message=message)
         print(f'{message}')
         return self.stub.GetServerResponse(message)
 
