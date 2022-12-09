@@ -34,7 +34,8 @@ class InventoryClient(object):
         name = re.search('title(.*)author', str(bookGetResponse))
         # Not fount
         if name is None:
-            print("The book is not found!")
+            result = "The book " + ISBN + " is not found!"
+            print(result)
             return "[Not Found]"
         # Found
         else:
@@ -49,5 +50,5 @@ class InventoryClient(object):
 
 if __name__ == '__main__':
     client = InventoryClient()
-    result = client.getBookName(ISBN="ISBN0001")
+    result = client.getBookName(ISBN="ISBN0011")
     print("The name is: ", result)
